@@ -4,26 +4,41 @@
   <title>Média Aritmética</title>
 </head>
 <body>
-  <label> Primeira Nota: </label>  <input id = "nota1" type = "number"> <br>
-  <label> Segunda Nota: </label> <input id = "nota2" type = "number"> <br>
-    <button onclick = "media()"> Calcular Média</button>
+  <label>Primeira Nota: </label>
+  <input id="nota1" type="number" step="0.01"><br>
+  <label>Segunda Nota: </label>
+  <input id="nota2" type="number" step="0.01"><br>
+  <button onclick="media()">Calcular Média</button>
 
-    <script type = "text/Javascript">
+  <script type="text/javascript">
+    function media() {
+        // Pega os valores dos inputs e converte para float
+        var nota1 = parseFloat(document.getElementById("nota1").value);
+        var nota2 = parseFloat(document.getElementById("nota2").value);
 
-    function media(){
-        var nota1 = parseFloat (document.getElementById("nota1").value);
-        var nota2 = parseFloat (document.getElementById("nota2").value);
+        // Verificação para garantir que as notas são válidas
+        if (isNaN(nota1) || isNaN(nota2)) {
+            alert("Por favor, insira notas válidas em ambos os campos.");
+            return; // Para a execução caso as notas sejam inválidas
+        }
 
-        var media = (nota1+nota2)/2;
+        // Calcula a média
+        var media = (nota1 + nota2) / 2;
 
-        if (media >= 7)
-        if (media == 10)
-        alert ("UAU! Aprovado com distinção");
-        else
-        alert ("Parabéns, aprovado! Média: " + media)
-        else
-        alert ("Reprovado")
+        // Exibe a média e as notas para depuração
+        alert("Nota 1: " + nota1 + "\nNota 2: " + nota2 + "\nMédia: " + media);
+
+        // Condicional para mostrar o status do aluno
+        if (media >= 7) {
+            if (media == 10) {
+                alert("UAU! Aprovado com distinção!");
+            } else {
+                alert("Parabéns, aprovado! Média: " + media);
+            }
+        } else {
+            alert("Reprovado! Média: " + media);
+        }
     }    
-</script>
+  </script>
 </body>
 </html>
